@@ -1,0 +1,31 @@
+<!--Second navbar from bootstrap/components/#navbar-->
+<div class="well">
+	<h4><b>The universe is the totality of everything that exists, has existed, or ever will exist.</b></h4>
+	<p>This Q&amp;A site is dedicated to questions about the history of the Universe</p>
+</div>
+
+
+<!--Media icons-->
+<div class="container">
+<div class="row">
+		<div class="col-sm-8 col-sm-offset-2">
+	<% @questions.each do |q| %>
+	<div class="media">
+	  <div class="media-left">
+	    <a href="#">
+	      <img class="media-object" src="<%= q.gravatar %>" width="100pt">
+	    </a>
+	  </div>
+	  <div class="media-body">
+	    <h4 class="media-heading"><%= q.email%> asked:</h4> 
+	    <div><%= time_ago_in_words q.created_at %> ago </div>
+	    <%= q.body %>
+	    <div>
+	     <a href="<%= question_path(q) %>" class="btn btn-success btn-xs">View Answers</a>
+	    </div>
+	  </div>
+	</div>
+	<% end %>
+	</div>
+	</div>
+</div>
