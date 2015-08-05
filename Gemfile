@@ -43,3 +43,6 @@ group :development, :test do
   gem 'spring'
 end
 
+# include sucher punch
+
+gem 'sucker_punch'

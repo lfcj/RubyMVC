@@ -1,43 +1,43 @@
 <div class="container">
 	<div class ="lead well">
-	<div class="media">
-	  <div class="media-left">
-	    <a href="#">
-	      <img class="media-object" src="<%= @question.gravatar %>" width="100pt">
-	    </a>
-	  </div>
-	  <div class="media-body">
-	    <h4 class="media-heading"><%= @question.email %> asked</h4>
-	    <div><%= time_ago_in_words @question.created_at %> ago </div>
-	    <%= @question.body %>
-	  </div>
+		<div class="media">
+			<div class="media-left">
+				<a href="#">
+					<img class="media-object" src="<%= @question.gravatar %>" width="100pt">
+				</a>
+			</div>
+			<div class="media-body">
+				<h4 class="media-heading"><%= @question.email %> asked</h4>
+				<div><%= time_ago_in_words @question.created_at %> ago </div>
+				<%= @question.body %>
+			</div>
+		</div>
 	</div>
-	</div>
-
 	<div class="row">
 		<div class="col-sm-8 col-sm-offset-2">
-
-		<div>
-			<button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#new-answer-modal">Submit new answer</button>
+			<div>
+				<button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#new-answer-modal">Submit new answer</button>
+			</div>
+			<%= render 'home/new_answer_form' %>
+			
+			<%= @answers.each do |answer| %>
+			<div class="media">
+				<div class="media-left">
+					<a href="#">
+						<img class="media-object" src="<%= answer.gravatar %>">
+					</a>
+				</div>
+				<div class="media-body">
+					<h4 class="media-heading"><%= answer.email %> answered:</h4>
+					<div><%= time_ago_in_words answer.created_at %> ago </div>
+					<%= answer.body %>
+				</div>
+			
+			<% end %>
+			<% if @answers.empty? %>
+			<div class='alert alert-info'>Nothing here yet, be the first to answer</div>
+			<% end %>
+			</div>
 		</div>
-
-		<%= render 'home/new_answer_form' %>
-
-	<%= @answers.each do |answer| %>
-	<div class="media">
-	  <div class="media-left">
-	    <a href="#">
-	      <img class="media-object" src="<%= answer.gravatar %>">
-	    </a>
-	  </div>
-	  <div class="media-body">
-	    <h4 class="media-heading"><%= answer.email %> answered:</h4>
-	    <div><%= time_ago_in_words answer.created_at %> ago </div>
-	    <%= answer.body %>
-	  </div>
-	  <% end %>
 	</div>
 </div>
-</div>
-</div>
-
